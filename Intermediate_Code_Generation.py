@@ -12,12 +12,12 @@ def infix_to_postfix(formula):
         elif ch == ')':
             while stack and stack[-1] != '(':
                 output += stack.pop()
-            stack.pop()  # pop '('
+            stack.pop()
         else:
             while stack and stack[-1] != '(' and PRI[ch] <= PRI[stack[-1]]:
                 output += stack.pop()
             stack.append(ch)
-    output += "".join(reversed(stack))  # leftover
+    output += "".join(reversed(stack))
     return output
 
 def generate3AC(pos):

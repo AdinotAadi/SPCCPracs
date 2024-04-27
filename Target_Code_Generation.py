@@ -16,17 +16,13 @@ def generateTargetCode(tac):
         else:
             print(f"MOV {line[0]}, {line[1]}")
 
-def main():
-    tac = [
-        ["t1", "a", "b", "+"],
-        ["t2", "c", "d", "/"],
-        ["t3", "t1", "t2", "-"],
-        ["r", "t3"]
-    ]
-    generateTargetCode(tac)
-
-if __name__ == "__main__":
-    main()
+tac = [
+    ["t1", "a", "b", "+"],
+    ["t2", "c", "d", "/"],
+    ["t3", "t1", "t2", "-"],
+    ["r", "t3"]
+]
+generateTargetCode(tac)
 
 """
     The TAC given as input is:
