@@ -1,4 +1,4 @@
-pos = 0;
+pos = 0
 
 def consume(string):
     global pos
@@ -34,14 +34,10 @@ def S(string):
         print("ERROR!!!")
         exit()
 
-def main():
-    string = input("Enter the string to parse: ")
-    S(string)
-    if(pos != len(string)):
-        print("ERROR!!! Unparsed Input remains.")
-        exit()
-    else:
-        print("Input Parsed Successfully.")
-
-if __name__ == "__main__":
-    main()
+string = input("Enter the string to parse: ")
+S(string)
+if(pos != len(string)):
+    print("ERROR!!! Unparsed Input remains.")
+    exit()
+else:
+    print("Input Parsed Successfully.")
