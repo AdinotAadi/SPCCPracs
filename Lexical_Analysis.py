@@ -1,40 +1,38 @@
-KEYWORDS = ["auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern", "float", "for", "goto", "if", "int", "long", "register", "return", "short", "signed", "sizeof", "static", "struct", "switch", "typedef", "union", "unsigned", "void", "volatile", "while"]
-keywordsFound = []
-PUNCTUATIONS = ["(", ")", "[", "]", "{", "}", ",", ".", ":", ";"]
-punctuationsFound = []
-OPERATORS = ["+", "-", "*", "/", "%", "=", "++", "--", "+=", "-=", "*=", "/=", "<", ">", "!", "!="]
-operatorsFound = []
-identifiersFound = []
-numbersFound = []
-tokensFound = []
+KEYWORDS = ['int', 'return']
+PUNCTUATORS = ["(", ")", "{", "}", ";"]
+OPERATORS = ["+", "="]
 
-filePath = input("Enter the file path: ")
-with open(filePath, "r") as f:
-    lines = f.readlines()
-    arr = []
-    for line in lines:
-        arr.extend(line.split())
-    for token in arr:
-        tokensFound.append(token)
-    print("Tokens found:", tokensFound)
-    for token in tokensFound.copy():
-        if token in KEYWORDS:
-            keywordsFound.append(token)
-            tokensFound.remove(token)
-        elif token in PUNCTUATIONS:
-            punctuationsFound.append(token)
-            tokensFound.remove(token)
-        elif token.isnumeric():
-            numbersFound.append(token)
-            tokensFound.remove(token)
-        elif token in OPERATORS:
-            operatorsFound.append(token)
-            tokensFound.remove(token)
-        else:
-            identifiersFound.append(token)
-            tokensFound.remove(token)
-    print("Keywords found:", len(set(keywordsFound)), "\n", set(keywordsFound))
-    print("Punctuations found:", len(set(punctuationsFound)), "\n", set(punctuationsFound))
-    print("Operators found:", len(set(operatorsFound)), "\n", set(operatorsFound))
-    print("Identifiers and Functions found:", len(set(identifiersFound)), "\n", set(identifiersFound))
-    print("Numbers found:", len(set(numbersFound)), "\n", set(numbersFound))
+keywordsFound = []
+punctuatorsFound = []
+operatorsFound = []
+allTokens = []
+tokens = []
+identifiersFound = []
+
+def lexer(fileName):
+	with open(fileName) as f:
+		lines = f.readlines()
+		for line in lines:
+			tokens.extend(line.split())
+	for token in tokens.copy():
+		allTokens.append(token)
+		if token in KEYWORDS:
+			keywordsFound.append(token)
+			tokens.remove(token)
+		elif token in PUNCTUATORS:
+			punctuatorsFound.append(token)
+			tokens.remove(token)
+		elif token in OPERATORS:
+			operatorsFound.append(token)
+			tokens.remove(token)
+		else:
+			identifiersFound.append(token)
+			tokens.remove(token)
+	print(f"No. of tokens found: {len(allTokens)}, Tokens: {set(allTokens)}")
+	print(f"No. of Keywords found: {len(set(keywordsFound))}, Keywords: {set(keywordsFound)}")
+	print(f"No. of Punctuations found: {len(set(punctuatorsFound))}, Punctuations: {set(punctuatorsFound)}")
+	print(f"No. of Identifiers found: {len(set(identifiersFound))}, Identifiers: {set(identifiersFound)}")
+
+
+fileName = input("Enter the name of the file: ")
+lexer(fileName)
