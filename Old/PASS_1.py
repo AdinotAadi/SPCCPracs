@@ -43,7 +43,7 @@ def pass1(assembly_code):
         print(f"{literal}: {address}")
 
 assembly_code = """
-FIRST   START 1000
+FIRST   START 100
         LDA   ='10'
         STA   ALPHA
 FIVE    DC    5
